@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Page Title</title>
+</head>
+<body>
+
+  <h1>Testnet Problem: Inspect element and see the network tab in chrome</h1>
+  <script>
+
+    for (let i = 0; i < 15; i++) {
+      console.log('sendign request: ', i);
+      fetch("https://public-node.testnet.rsk.co/", {
+        "referrer": "",
+        "headers": {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          "id": 42,
+          "jsonrpc": "2.0",
+          "method": "net_version",
+          "params": []
+        }),
+        "method": "POST"
+      })
+        .then(response => response.json())
+        .then((data) => {
+          console.log('Response at index: ', i, data);
+          return data.json
+        })
+    }
+  </script>
+
+</body>
+
+</html>
